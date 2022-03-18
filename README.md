@@ -12,4 +12,4 @@ FBI crime data explorer [(Link)](https://crime-data-explorer.fr.cloud.gov/pages/
 
 ## Screenshot of the interactive dashboard
 
-<img src="https://github.umn.edu/park2599/Tableau_Hate_Crime_Dashboard/blob/master/hate_crime.JPG" width="1000">
+<img src="https://github.com/brandon-park/Tableau_Hate_Crime_Dashboard/blob/main/hate_crime.jpg" width="1000">
