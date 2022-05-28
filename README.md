@@ -10,7 +10,7 @@ FBI crime data explorer [(Link)](https://crime-data-explorer.fr.cloud.gov/pages/
 
 ## Screenshot of the interactive dashboard
 
-<img src="https://github.com/brandon-park/Snowflake_Tableau_Hate_Crime_Dashboard/blob/main/Snowflake_Logo.svg.png?raw=true" width="200">
+<img src="https://github.com/brandon-park/Snowflake_Tableau_Hate_Crime_Dashboard/blob/main/architecture.png?raw=true" width="1000">
 
 
 <img src="https://github.com/brandon-park/Snowflake_Tableau_Hate_Crime_Dashboard/blob/main/dashboard_demo.gif?raw=true" width="1000">
