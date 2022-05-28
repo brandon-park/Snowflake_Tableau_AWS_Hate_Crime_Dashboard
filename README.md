@@ -6,7 +6,7 @@ FBI crime data explorer [(Link)](https://crime-data-explorer.fr.cloud.gov/pages/
 <br>
 <br> 
  
-## Click [HERE](https://public.tableau.com/app/profile/seokwoo.park/viz/USHateCrimeDashboard/Dashboard13?publish=yes) to view interactive dashboard from Tableau public
+## Click [HERE]([https://public.tableau.com/app/profile/seokwoo.park/viz/USHateCrimeDashboard/Dashboard13?publish=yes](https://public.tableau.com/views/hate_crime_tableau_workbook/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link)) to view interactive dashboard from Tableau public
 <br>
 <br>
 
