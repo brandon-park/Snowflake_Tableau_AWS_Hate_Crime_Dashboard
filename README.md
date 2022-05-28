@@ -1,4 +1,4 @@
-# US_Hate_Crime_Dashboard_Using_Tableau_Snowflake_AWS
+# US_Hate_Crime_Dashboard
 
 ## Purpose
 
