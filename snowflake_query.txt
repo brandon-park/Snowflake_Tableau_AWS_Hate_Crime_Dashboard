@@ -1,0 +1,80 @@
+// AWS S3 storage intergartion (s3_hatecrime) is hidden for security purpose
+
+// Create database and schema
+
+CREATE OR REPLACE DATABASE PROJECT_DB;
+
+CREATE OR REPLACE SCHEMA PROJECT_DB.AWS_stages;
+
+CREATE OR REPLACE SCHEMA PROJECT_DB.PROJECT_TABLES;
+
+CREATE OR REPLACE SCHEMA PROJECT_DB.file_formats;
+
+// Create table 
+CREATE OR REPLACE TABLE PROJECT_DB.PROJECT_TABLES.hate_crime (
+  ROWNUM INT,
+  INCIDENT_ID INT,
+  DATA_YEAR INT,
+  ORI STRING,
+  PUB_AGENCY_NAME STRING,
+  AGENCY_TYPE_NAME STRING,
+  STATE_ABBR STRING,
+  STATE_NAME STRING,
+  DIVISION_NAME STRING,
+  REGION_NAME STRING,
+  POPULATION_GROUP_DESC STRING,
+  INCIDENT_DATE DATETIME,    
+  TOTAL_OFFENDER_COUNT INT,
+  OFFENDER_RACE STRING,
+  VICTIM_COUNT INT,
+  OFFENSE_NAME STRING,
+  TOTAL_INDIVIDUAL_VICTIMS INT,
+  LOCATION_NAME STRING,
+  BIAS_DESC STRING,
+  VICTIM_TYPES STRING,
+  MULTIPLE_OFFENSE STRING,
+  MULTIPLE_BIAS STRING );
+
+CREATE OR REPLACE TABLE PROJECT_DB.PROJECT_TABLES.US_census (
+  STATE STRING,
+  POPESTIMATE2019 FLOAT,
+  lat FLOAT,
+  long FLOAT);
+
+
+
+// Create file format object
+CREATE OR REPLACE file format PROJECT_DB.file_formats.csv_fileformat
+    type = csv
+    field_delimiter = ','
+    skip_header = 1
+    empty_field_as_null = TRUE    
+    null_if = ('NA','null')
+    FIELD_OPTIONALLY_ENCLOSED_BY = '"';
+    
+    
+ // Create stage object with integration object & file format object
+CREATE OR REPLACE stage PROJECT_DB.AWS_stages.csv_folder
+    URL = 's3://snowflake-hatecrime/'
+    STORAGE_INTEGRATION = s3_hatecrime
+    FILE_FORMAT = PROJECT_DB.file_formats.csv_fileformat;
+
+
+
+// Use Copy command       
+COPY INTO PROJECT_DB.PROJECT_TABLES.hate_crime
+    FROM @PROJECT_DB.AWS_stages.csv_folder
+    files = ('hc_cleaned.csv');
+
+
+COPY INTO PROJECT_DB.PROJECT_TABLES.US_census
+    FROM @PROJECT_DB.AWS_stages.csv_folder
+    files = ('2019_Census_US_Population_Data_By_State_Lat_Long.csv');
+
+
+// Check if the table was correctly loaded
+SELECT * FROM PROJECT_DB.PROJECT_TABLES.hate_crime;
+    
+SELECT * FROM PROJECT_DB.PROJECT_TABLES.US_census;
+
+   
